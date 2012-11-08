@@ -1,6 +1,6 @@
 # CollectionJson
 
-This library provides support for web apis usng the [Collection+JSON] (http://amundsen.com/media-types/collection/) media type authored by [Mike Amundsen] (http://twitter.com/mamund).
+This library provides support for ASP.NET Web API using the [Collection+JSON] (http://amundsen.com/media-types/collection/) hypermedia mediatype authored by [Mike Amundsen] (http://twitter.com/mamund).
 
 #Features
 
