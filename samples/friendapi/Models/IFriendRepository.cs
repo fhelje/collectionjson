@@ -8,7 +8,9 @@ namespace CollectionJson.Models
     public interface IFriendRepository
     {
         IEnumerable<Friend> GetAll();
-        Friend Get(int friendId);
-        void Add(Friend friend);
+        Friend Get(int id);
+        int Add(Friend friend);
+        void Update(Friend friend);
+        void Remove(int id);
     }
 }

@@ -20,7 +20,7 @@ namespace CollectionJson
             config.Formatters.Add(new CollectionJsonFormatter());
 
             config.Routes.MapHttpRoute(
-                "API Default", "{controller}/{id}",
+                "default", "{controller}/{id}",
                 new { id = RouteParameter.Optional });
 
             var builder = new ContainerBuilder();

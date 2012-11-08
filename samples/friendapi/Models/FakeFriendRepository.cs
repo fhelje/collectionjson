@@ -8,12 +8,13 @@ namespace CollectionJson.Models
     public class FakeFriendRepository : IFriendRepository
     {
         private static List<Friend> friends = new List<Friend>();
+        private static int id = 1;
 
         static FakeFriendRepository()
         {
-            friends.Add(new Friend { Id = 1, ShortName = "jdoe", Name = "J. Doe", Email = "jdoe@example.org", Blog = new Uri("http://examples.org/blogs/jdoe"), Avatar = new Uri("http://examples.org/images/jode") });
-            friends.Add(new Friend { Id = 2, ShortName = "msmith", Name = "M. Smith", Email = "msmith@example.org", Blog = new Uri("http://examples.org/blogs/msmith"), Avatar = new Uri("http://examples.org/images/msmith") });
-            friends.Add(new Friend { Id = 2, ShortName = "rwilliams", Name = "R. Williams", Email = "rwilliams@example.org", Blog = new Uri("http://examples.org/blogs/rwilliams"), Avatar = new Uri("http://examples.org/images/rwilliams") });
+            friends.Add(new Friend { Id = id++, FullName = "J. Doe", Email = "jdoe@example.org", Blog = new Uri("http://examples.org/blogs/jdoe"), Avatar = new Uri("http://examples.org/images/jode") });
+            friends.Add(new Friend { Id = id++, FullName = "M. Smith", Email = "msmith@example.org", Blog = new Uri("http://examples.org/blogs/msmith"), Avatar = new Uri("http://examples.org/images/msmith") });
+            friends.Add(new Friend { Id = id++, FullName = "R. Williams", Email = "rwilliams@example.org", Blog = new Uri("http://examples.org/blogs/rwilliams"), Avatar = new Uri("http://examples.org/images/rwilliams") });
         }
 
         public FakeFriendRepository()
@@ -25,19 +26,31 @@ namespace CollectionJson.Models
             return friends;
         }
 
-        public Friend Get(int friendId)
+        public Friend Get(int id)
         {
-            return friends.FirstOrDefault(f => f.Id == friendId);
+            return friends.FirstOrDefault(f => f.Id == id);
         }
 
-        public void Add(Friend friend)
+        public int Add(Friend friend)
         {
-            throw new NotImplementedException();
+            friend.Id = id++;
+            friends.Add(friend);
+            return friend.Id;
         }
 
-        static int GetNextId()
+        public void Remove(int id)
         {
-            return friends.OrderBy(f => f.Id).Last().Id + 1;
+            var friend = Get(id);
+            friends.Remove(friend);
+        }
+
+        public void Update(Friend friend)
+        {
+            var existingFriend = Get(friend.Id);
+            existingFriend.Blog = friend.Blog;
+            existingFriend.Avatar = friend.Avatar;
+            existingFriend.Email = friend.Email;
+            existingFriend.FullName = friend.FullName;
         }
     }
 }

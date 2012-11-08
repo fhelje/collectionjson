@@ -71,6 +71,7 @@
     <Compile Include="Controllers\FriendsController.cs" />
     <Compile Include="Infrastructure\CollectionJsonDocumentBuilder.cs" />
     <Compile Include="Infrastructure\ICollectionJsonDocumentBuilder.cs" />
+    <Compile Include="Models\TemplateExtensions.cs" />
     <Compile Include="Models\FakeFriendRepository.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\IFriendRepository.cs" />
